@@ -22,10 +22,11 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
+
 urlpatterns = [
-    path('', expense, name='expense'),
+    path('', home, name='home'),
     path('add_expense/', add_expense, name='add_expense'),
-    path('admin/', admin.site.urls),
+    path('add_fundin/', add_fund, name='add_fundin'),
 ]
 
 

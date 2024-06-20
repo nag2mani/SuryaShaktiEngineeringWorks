@@ -80,10 +80,10 @@
             <div class="container button-container">
                 <div class="row justify-content-around">
                     <div class="col-12 col-sm-6 col-md-4 col-lg-2 mb-3">
-                        <a href="{% url 'add_expense' %}" class="shadow">Expenses</a>
+                        <a href="/add_expense/" class="shadow">Expenses</a>
                     </div>
                     <div class="col-12 col-sm-6 col-md-4 col-lg-2 mb-3">
-                        <a href="#" class="shadow">Fund In</a>
+                        <a href="/add_fundin/" class="shadow">Fund In</a>
                     </div>
                     <div class="col-12 col-sm-6 col-md-4 col-lg-2 mb-3">
                         <a href="#" class="shadow">Employee</a>
@@ -110,19 +110,13 @@
                     <div class="col-12 col-md-3">
                         <div class="info-box">
                             <h4>Total Cash In Hand</h4>
-                            <div class="value">Rs. 22,235</div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-3">
-                        <div class="info-box">
-                            <h4>Total Fund In</h4>
-                            <div class="value">Rs. 43,968.45</div>
+                            <div class="value">Rs. {{total_cash_in_hand}}</div>
                         </div>
                     </div>
                     <div class="col-12 col-md-3">
                         <div class="info-box">
                             <h4>Total Expenses</h4>
-                            <div class="value">Rs. {{total_expenses}}</div>
+                            <div class="value">Rs. {{total_expense}}</div>
                         </div>
                     </div>
                     <div class="col-12 col-md-3">
