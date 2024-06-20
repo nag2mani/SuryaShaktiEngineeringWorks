@@ -23,7 +23,12 @@ class Expenses(models.Model):
     category = models.CharField(max_length=50, choices=CATEGORY_CHOICES)
     remark = models.TextField(blank=True, null=True)
 
+    # #This will give you cleaner output during interaction with Shell.
+    # def __str__(self):
+    #     return f"{self.name_of_person} - {self.online_expenses} - {self.cash_expenses} on {self.date_time.strftime('%Y-%m-%d %H:%M:%S')}"
 
-    def __str__(self):
-        return f"{self.name_of_person} - {self.online_expenses} - {self.cash_expenses} on {self.date_time.strftime('%Y-%m-%d %H:%M:%S')}"
-
+class FundIn(models.Model):
+    date_time = models.DateTimeField(auto_now_add=True)
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    source = models.CharField(max_length=100)
+    remark = models.TextField(blank=True, null=True)
