@@ -42,3 +42,19 @@ class EmployeeForm(forms.ModelForm):
             # 'account': forms.NumberInput(attrs={'class': 'form-control'}),
             'address': forms.Textarea(attrs={'class': 'form-control'}),
         }
+
+
+class InventoryForm(forms.ModelForm):
+    class Meta:
+        model = Inventory
+        fields = ['inventory_name', 'quantity', 'total_price', 'remark']
+        widgets = {
+            'inventory_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'quantity': forms.NumberInput(attrs={'class': 'form-control'}),
+            'total_price': forms.NumberInput(attrs={'class': 'form-control'}),
+            'remark': forms.Textarea(attrs={'class': 'form-control'}),
+        }
+
+
+
+        

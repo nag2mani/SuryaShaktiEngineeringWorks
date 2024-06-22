@@ -28,6 +28,7 @@ urlpatterns = [
     path('add_expense/', add_expense, name='add_expense'),
     path('add_fundin/', add_fund, name='add_fundin'),
     path('add_employee/', add_employee, name='add_employee'),
+    path('add_inventory/', add_inventory, name='add_inventory'),
     path('admin/', admin.site.urls)
 ]
 
