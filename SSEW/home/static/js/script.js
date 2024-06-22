@@ -9,3 +9,14 @@ function updateClock() {
 setInterval(updateClock, 1000);
 // Initial call to display immediately
 updateClock();
+
+
+function toggleEmployeeDropdown() {
+    var checkBox = document.getElementById('is_employee_expense');
+    var dropdown = document.getElementById('employee-dropdown');
+    if (checkBox.checked == true) {
+        dropdown.style.display = 'block';
+    } else {
+        dropdown.style.display = 'none';
+    }
+}

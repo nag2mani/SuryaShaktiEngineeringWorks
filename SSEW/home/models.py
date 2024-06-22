@@ -1,11 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-
 # These are my models, created for database.
 
 class Expenses(models.Model):
-    
     CATEGORY_CHOICES = [
         ('salary', 'SALARY'),
         ('adv_salary', 'ADVANCE SALARY'),
@@ -23,8 +21,9 @@ class Expenses(models.Model):
     name_of_person = models.CharField(max_length=50)
     category = models.CharField(max_length=50, choices=CATEGORY_CHOICES)
     remark = models.TextField(blank=True, null=True)
+    is_employee_expense = models.BooleanField(default=False)
+    employee = models.ForeignKey('Employee', on_delete=models.SET_NULL, null=True, blank=True)
 
-    # #This will give you cleaner output during interaction with Shell.
     # def __str__(self):
     #     return f"{self.name_of_person} - {self.online_expenses} - {self.cash_expenses} on {self.date_time.strftime('%Y-%m-%d %H:%M:%S')}"
 
@@ -61,8 +60,8 @@ class Employee(models.Model):
     account = models.DecimalField(max_digits=10, decimal_places=2)
     address = models.TextField()
 
-    # def __str__(self):
-    #     return self.name
+    def __str__(self):
+        return self.name + ", Mobile 1 : " + self.mobile1 + ", Aadhar Number : " + self.aadhar_number
 
 
 class Inventory(models.Model):

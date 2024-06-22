@@ -1,17 +1,20 @@
 from django import forms
-from .models import Expenses, FundIn
+from .models import *
 
 class ExpensesForm(forms.ModelForm):
     class Meta:
         model = Expenses
-        fields = ['online_expenses', 'cash_expenses', 'name_of_person', 'category', 'remark']
+        fields = ['online_expenses', 'cash_expenses', 'name_of_person', 'category', 'remark', 'is_employee_expense', 'employee']
         widgets = {
             'online_expenses': forms.NumberInput(attrs={'class': 'form-control'}),
             'cash_expenses': forms.NumberInput(attrs={'class': 'form-control'}),
             'name_of_person': forms.TextInput(attrs={'class': 'form-control'}),
             'category': forms.Select(attrs={'class': 'form-control'}),
             'remark': forms.Textarea(attrs={'class': 'form-control'}),
+            'is_employee_expense': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
+            'employee': forms.Select(attrs={'class': 'form-control'}),
         }
+
 
 class FundInForm(forms.ModelForm):
     class Meta:
@@ -23,4 +26,19 @@ class FundInForm(forms.ModelForm):
             'fund_head': forms.TextInput(attrs={'class': 'form-control'}),
             'category': forms.Select(attrs={'class': 'form-control'}),
             'remark': forms.Textarea(attrs={'class': 'form-control'}),
+        }
+
+
+class EmployeeForm(forms.ModelForm):
+    class Meta:
+        model = Employee
+        fields = ['name', 'mobile1', 'mobile2', 'aadhar_number', 'salary', 'account', 'address']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control'}),
+            'mobile1': forms.TextInput(attrs={'class': 'form-control'}),
+            'mobile2': forms.TextInput(attrs={'class': 'form-control'}),
+            'aadhar_number': forms.TextInput(attrs={'class': 'form-control'}),
+            'salary': forms.NumberInput(attrs={'class': 'form-control'}),
+            'account': forms.NumberInput(attrs={'class': 'form-control'}),
+            'address': forms.Textarea(attrs={'class': 'form-control'}),
         }

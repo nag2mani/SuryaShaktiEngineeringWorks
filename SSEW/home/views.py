@@ -44,3 +44,16 @@ def add_fund(request):
     else:
         form = FundInForm()
     return render(request, 'add_fundin.html', {'form': form})
+
+
+def add_employee(request):
+    if request.method == 'POST':
+        form = EmployeeForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')  # Redirect to the home
+    else:
+        form = EmployeeForm()
+    return render(request, 'add_employee.html', {'form': form})
+
+
