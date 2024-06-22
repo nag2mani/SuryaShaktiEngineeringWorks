@@ -32,13 +32,13 @@ class FundInForm(forms.ModelForm):
 class EmployeeForm(forms.ModelForm):
     class Meta:
         model = Employee
-        fields = ['name', 'mobile1', 'mobile2', 'aadhar_number', 'salary', 'account', 'address']
+        fields = ['name', 'mobile1', 'mobile2', 'aadhar_number', 'salary', 'address']
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control'}),
             'mobile1': forms.TextInput(attrs={'class': 'form-control'}),
             'mobile2': forms.TextInput(attrs={'class': 'form-control'}),
             'aadhar_number': forms.TextInput(attrs={'class': 'form-control'}),
             'salary': forms.NumberInput(attrs={'class': 'form-control'}),
-            'account': forms.NumberInput(attrs={'class': 'form-control'}),
+            # 'account': forms.NumberInput(attrs={'class': 'form-control'}),
             'address': forms.Textarea(attrs={'class': 'form-control'}),
         }

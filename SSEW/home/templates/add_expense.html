@@ -21,7 +21,15 @@
                 <label for="cash_expenses" class="form-label">Cash Expenses</label>
                 {{ form.cash_expenses }}
             </div>
-            <div class="mb-3">
+            <div class="mb-3 form-check">
+                {{ form.is_employee_expense }}
+                <label class="form-check-label" for="id_is_employee_expense">Expense Done on Employee</label>
+            </div>
+            <div class="mb-3" id="employee-dropdown" style="display: none;">
+                <label for="employee" class="form-label">Employee</label>
+                {{ form.employee }}
+            </div>
+            <div class="mb-3" id="id_name_of_person">
                 <label for="name_of_person" class="form-label">Name of Person</label>
                 {{ form.name_of_person }}
             </div>
@@ -33,24 +41,19 @@
                 <label for="remark" class="form-label">Remark</label>
                 {{ form.remark }}
             </div>
-            <div class="mb-3 form-check">
-                {{ form.is_employee_expense }}
-                <label class="form-check-label" for="id_is_employee_expense">Expense Done on Employee</label>
-            </div>
-            <div class="mb-3" id="employee-dropdown" style="display: none;">
-                <label for="employee" class="form-label">Employee</label>
-                {{ form.employee }}
-            </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
     <script>
         document.getElementById('id_is_employee_expense').addEventListener('change', function() {
             var dropdown = document.getElementById('employee-dropdown');
+            var name = document.getElementById('id_name_of_person');
             if (this.checked) {
                 dropdown.style.display = 'block';
+                name.style.display = 'none';
             } else {
                 dropdown.style.display = 'none';
+                name.style.display = 'block';
             }
         });
     </script>

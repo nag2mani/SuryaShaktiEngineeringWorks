@@ -57,7 +57,7 @@ class Employee(models.Model):
     mobile2 = models.CharField(max_length=10, blank=True, null=True)
     aadhar_number = models.CharField(max_length=12, unique=True)
     salary = models.DecimalField(max_digits=10, decimal_places=2)
-    account = models.DecimalField(max_digits=10, decimal_places=2)
+    # account = models.DecimalField(max_digits=10, decimal_places=2)
     address = models.TextField()
 
     def __str__(self):
