@@ -74,5 +74,3 @@ class Inventory(models.Model):
     # def __str__(self):
     #     return self.inventory_name
 
-
-
