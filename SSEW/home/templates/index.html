@@ -72,7 +72,7 @@
         <!-- Section - 1-->
 
         <div class="bg-warning text-center py-4">
-            <h3 class="mb-5">Click On the Button to Enter Expenses and Fund in the Database</h3>
+            <h3 class="mb-5">Click on the Button to enter Expense, Fund, Inventory & Employee in the Database</h3>
             <div class="container button-container">
                 <div class="row justify-content-around">
                     <div class="col-12 col-sm-6 col-md-4 col-lg-2 mb-3">
@@ -91,7 +91,7 @@
                         <a href="#" class="shadow">DashBoard</a>
                     </div>
                     <div class="col-12 col-sm-6 col-md-4 col-lg-2 mb-3">
-                        <a href="#" class="shadow">Report</a>
+                        <a href="/report/" class="shadow">Report</a>
                     </div>
                 </div>
             </div>
@@ -100,7 +100,7 @@
 
         <!-- Section - 2 ;-->
         <div class="bg-info text-center py-4">
-            <h3 class="mb-5">Your Total Cash, Expenses and Fund in the Database</h3>
+            <h3 class="mb-5">Your Total Cash In Hand, Total Expenses and Total Employees in the Database</h3>
             <div class="container">
                 <div class="row justify-content-around">
                     <div class="col-12 col-md-3">
@@ -141,7 +141,7 @@
                                         <b>Date:</b> {{ fund_in.date_time|date:"F d, Y" }} &middot;
                                         <b>Time:</b> {{ fund_in.date_time|time:"H:i:s" }} &middot;
                                         <b>Name:</b> {{ fund_in.fund_head }} &middot;
-                                        <b>Amount:</b> Rs. {{ fund_in.cash_fund }}
+                                        <b>Amount:</b> Rs. {{ fund_in.cash_fund }} &nbsp;
                                         <i class="fas fa-arrow-down" style="color: green;font-size: 18px; font-weight: bold;"></i> <!-- Cash In -->
                                     </li>
                                     <hr>
@@ -152,7 +152,7 @@
                                         <b>Date:</b> {{ transaction.date_time|date:"F d, Y" }} &middot;
                                         <b>Time:</b> {{ transaction.date_time|time:"H:i:s" }} &middot;
                                         <b>Name:</b> {{ transaction.name_of_person }} &middot;
-                                        <b>Amount:</b> Rs. {{ transaction.cash_expenses }}
+                                        <b>Amount:</b> Rs. {{ transaction.cash_expenses }} &nbsp;
                                         <i class="fas fa-arrow-up" style="color: red;font-size: 18px; font-weight: bold;"></i> <!-- Cash Out -->
                                     </li>
                                     <hr>
@@ -171,7 +171,7 @@
                                         <b>Date:</b> {{ fund_in.date_time|date:"F d, Y" }} &middot;
                                         <b>Time:</b> {{ fund_in.date_time|time:"H:i:s" }} &middot;
                                         <b>Name:</b> {{ fund_in.fund_head }} &middot;
-                                        <b>Amount:</b> Rs. {{ fund_in.online_fund }}
+                                        <b>Amount:</b> Rs. {{ fund_in.online_fund }} &nbsp;
                                         <i class="fas fa-arrow-down" style="color: green;font-size: 18px; font-weight: bold;"></i> <!-- Online In -->
                                     </li>
                                     <hr>
@@ -182,7 +182,7 @@
                                         <b>Date:</b> {{ transaction.date_time|date:"F d, Y" }} &middot;
                                         <b>Time:</b> {{ transaction.date_time|time:"H:i:s" }} &middot;
                                         <b>Name:</b> {{ transaction.name_of_person }} &middot;
-                                        <b>Amount:</b> Rs. {{ transaction.online_expenses }}
+                                        <b>Amount:</b> Rs. {{ transaction.online_expenses }} &nbsp;
                                         <i class="fas fa-arrow-up" style="color: red;font-size: 18px; font-weight: bold;"></i> <!-- Online Out -->
                                     </li>
                                     <hr>
