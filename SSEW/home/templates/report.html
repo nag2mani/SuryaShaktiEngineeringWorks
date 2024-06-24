@@ -35,22 +35,23 @@
                                         class="btn btn-primary w-100">Fund Expense Report (XLSX)</button>
                                 </div>
                                 <div class="col-md-4">
-                                    <button type="submit" name="report_type" value="fund_expense_pdf"
-                                        class="btn btn-primary w-100">Fund Expense Report (PDF)</button>
-                                </div>
-                                <div class="col-md-4">
                                     <button type="submit" name="report_type" value="employee"
-                                        class="btn btn-secondary w-100">Employee Report (XLSX)</button>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-md-4">
-                                    <button type="submit" name="report_type" value="employee_pdf"
-                                        class="btn btn-secondary w-100">Employee Report (PDF)</button>
+                                    class="btn btn-secondary w-100">Employee Report (XLSX)</button>
                                 </div>
                                 <div class="col-md-4">
                                     <button type="submit" name="report_type" value="inventory"
                                         class="btn btn-success w-100">Inventory Report (XLSX)</button>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-4">
+                                    <button type="submit" name="report_type" value="fund_expense_pdf"
+                                        class="btn btn-primary w-100">Fund Expense Report (PDF)</button>
+                                </div>
+                                <div class="col-md-4">
+                                    <button type="submit" name="report_type" value="employee_pdf"
+                                        class="btn btn-secondary w-100">Employee Report (PDF)</button>
                                 </div>
                                 <div class="col-md-4">
                                     <button type="submit" name="report_type" value="inventory_pdf"
@@ -64,6 +65,7 @@
         </div>
     </div>
 
+    <!-- For Viewing Report -->
 
     <div class="container">
         <div class="row justify-content-center mt-5">
@@ -71,6 +73,33 @@
                 <div class="card">
                     <div class="card-body">
                         <h2 class="card-title text-center mb-3">View Reports</h2>
+                        <form method="get" action="{% url 'generate_report' %}">
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="from_date" class="form-label">From Date</label>
+                                    <input type="date" class="form-control" id="from_date" name="from_date" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="to_date" class="form-label">To Date</label>
+                                    <input type="date" class="form-control" id="to_date" name="to_date" required>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-4">
+                                    <button type="submit" name="report_type" value="fund_expense"
+                                        class="btn btn-primary w-100">Fund-Expense Report</button>
+                                </div>
+                                <div class="col-md-4">
+                                    <button type="submit" name="report_type" value="employee"
+                                        class="btn btn-primary w-100">Employee Report</button>
+                                </div>
+                                <div class="col-md-4">
+                                    <button type="submit" name="report_type" value="inventory"
+                                        class="btn btn-primary w-100">Inventory Report</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
