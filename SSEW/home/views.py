@@ -1,7 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from .models import Expenses, FundIn, Employee, Inventory
 from django.utils.dateparse import parse_date
+from django.http import JsonResponse
 import xlsxwriter
 from io import BytesIO
 from reportlab.pdfgen import canvas
@@ -55,7 +56,10 @@ def add_expense(request):
     
     return render(request, 'add_expense.html', {'form': form})
 
-
+def load_subcategories(request):
+    category_id = request.GET.get('category')
+    subcategories = SubCategory.objects.filter(category_id=category_id).all()
+    return JsonResponse(list(subcategories.values('id', 'name')), safe=False)
 
 def add_fund(request):
     if request.method == 'POST':

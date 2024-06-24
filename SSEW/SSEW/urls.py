@@ -30,6 +30,7 @@ urlpatterns = [
     path('add_employee/', add_employee, name='add_employee'),
     path('add_inventory/', add_inventory, name='add_inventory'),
     path('report/', generate_report, name='generate_report'),
+    path('ajax/load-subcategories/', load_subcategories, name='load_subcategories'),
     path('admin/', admin.site.urls)
 ]
 
