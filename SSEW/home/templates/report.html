@@ -1,52 +1,82 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/css/forms.css">
     <title>Generate Reports</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
-    <div class="container mt-5">
-        <h2>Generate Reports</h2>
-        <form method="get" action="{% url 'generate_report' %}">
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <label for="from_date" class="form-label">From Date</label>
-                    <input type="date" class="form-control" id="from_date" name="from_date" required>
-                </div>
-                <div class="col-md-6">
-                    <label for="to_date" class="form-label">To Date</label>
-                    <input type="date" class="form-control" id="to_date" name="to_date" required>
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title text-center mb-3">Generate Reports</h2>
+                        <form method="get" action="{% url 'generate_report' %}">
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="from_date" class="form-label">From Date</label>
+                                    <input type="date" class="form-control" id="from_date" name="from_date" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="to_date" class="form-label">To Date</label>
+                                    <input type="date" class="form-control" id="to_date" name="to_date" required>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-md-4">
+                                    <button type="submit" name="report_type" value="fund_expense"
+                                        class="btn btn-primary w-100">Fund Expense Report (XLSX)</button>
+                                </div>
+                                <div class="col-md-4">
+                                    <button type="submit" name="report_type" value="fund_expense_pdf"
+                                        class="btn btn-primary w-100">Fund Expense Report (PDF)</button>
+                                </div>
+                                <div class="col-md-4">
+                                    <button type="submit" name="report_type" value="employee"
+                                        class="btn btn-secondary w-100">Employee Report (XLSX)</button>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-md-4">
+                                    <button type="submit" name="report_type" value="employee_pdf"
+                                        class="btn btn-secondary w-100">Employee Report (PDF)</button>
+                                </div>
+                                <div class="col-md-4">
+                                    <button type="submit" name="report_type" value="inventory"
+                                        class="btn btn-success w-100">Inventory Report (XLSX)</button>
+                                </div>
+                                <div class="col-md-4">
+                                    <button type="submit" name="report_type" value="inventory_pdf"
+                                        class="btn btn-success w-100">Inventory Report (PDF)</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
-            <div class="row mb-3">
-                <div class="col-md-4">
-                    <button type="submit" name="report_type" value="fund_expense" class="btn btn-primary w-100">Fund Expense Report (XLSX)</button>
-                </div>
-                <div class="col-md-4">
-                    <button type="submit" name="report_type" value="fund_expense_pdf" class="btn btn-primary w-100">Fund Expense Report (PDF)</button>
-                </div>
-                <div class="col-md-4">
-                    <button type="submit" name="report_type" value="employee" class="btn btn-secondary w-100">Employee Report (XLSX)</button>
-                </div>
-            </div>
-            <div class="row mb-3">
-                <div class="col-md-4">
-                    <button type="submit" name="report_type" value="employee_pdf" class="btn btn-secondary w-100">Employee Report (PDF)</button>
-                </div>
-                <div class="col-md-4">
-                    <button type="submit" name="report_type" value="inventory" class="btn btn-success w-100">Inventory Report (XLSX)</button>
-                </div>
-                <div class="col-md-4">
-                    <button type="submit" name="report_type" value="inventory_pdf" class="btn btn-success w-100">Inventory Report (PDF)</button>
-                </div>
-            </div>
-        </form>
+        </div>
     </div>
+
+
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title text-center mb-3">View Reports</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
