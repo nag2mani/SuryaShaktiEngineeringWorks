@@ -14,6 +14,7 @@ class Expenses(models.Model):
     subcategory = models.ForeignKey('SubCategory', on_delete=models.CASCADE, default=1)
 
     def __str__(self):
+        # If name is "Unknown" then there must be some employee, use Expenses.employee to check.
         return f"Expense Name {self.name_of_person or 'Unknown'} on {self.date_time}"
 
 

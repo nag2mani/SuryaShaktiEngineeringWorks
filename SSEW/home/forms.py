@@ -53,3 +53,7 @@ class InventoryForm(forms.ModelForm):
             'total_price': forms.NumberInput(attrs={'class': 'form-control'}),
             'remark': forms.Textarea(attrs={'class': 'form-control'}),
         }
+
+
+
+
