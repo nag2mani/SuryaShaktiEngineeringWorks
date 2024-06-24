@@ -30,7 +30,6 @@ urlpatterns = [
     path('add_employee/', add_employee, name='add_employee'),
     path('add_inventory/', add_inventory, name='add_inventory'),
     path('report/', report, name='report'),
-    # path('generate_employee_xlsx_report/', generate_employee_xlsx_report, name='generate_employee_xlsx_report'),
     path('ajax/load-subcategories/', load_subcategories, name='load_subcategories'),
     path('employee_list/', employee_list, name='employee_list'),
     path('inventory_list/', inventory_list, name='inventory_list'),
