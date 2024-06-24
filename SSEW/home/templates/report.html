@@ -18,7 +18,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h2 class="card-title text-center mb-3">Generate Reports</h2>
-                        <form method="get" action="{% url 'generate_report' %}">
+                        <form>
                             <div class="row mb-3">
                                 <div class="col-md-6">
                                     <label for="from_date" class="form-label">From Date</label>
@@ -31,15 +31,15 @@
                             </div>
                             <div class="row mb-3">
                                 <div class="col-md-4">
-                                    <button type="submit" name="report_type" value="fund_expense"
+                                    <button type="submit" name="report_type" value="fund_expense_xlsx"
                                         class="btn btn-primary w-100">Fund Expense Report (XLSX)</button>
                                 </div>
                                 <div class="col-md-4">
-                                    <button type="submit" name="report_type" value="employee"
+                                    <button type="submit" name="report_type" value="employee_xlsx"
                                     class="btn btn-secondary w-100">Employee Report (XLSX)</button>
                                 </div>
                                 <div class="col-md-4">
-                                    <button type="submit" name="report_type" value="inventory"
+                                    <button type="submit" name="report_type" value="inventory_xlsx"
                                         class="btn btn-success w-100">Inventory Report (XLSX)</button>
                                 </div>
                             </div>
@@ -73,7 +73,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h2 class="card-title text-center mb-3">View Reports</h2>
-                        <form method="get" action="{% url 'generate_report' %}">
+                        <form>
                             <div class="row mb-3">
                                 <div class="col-md-6">
                                     <label for="from_date" class="form-label">From Date</label>
@@ -86,18 +86,9 @@
                             </div>
 
                             <div class="row mb-3">
-                                <div class="col-md-4">
-                                    <button type="submit" name="report_type" value="fund_expense"
-                                        class="btn btn-primary w-100">Fund-Expense Report</button>
-                                </div>
-                                <div class="col-md-4">
-                                    <button type="submit" name="report_type" value="employee"
-                                        class="btn btn-primary w-100">Employee Report</button>
-                                </div>
-                                <div class="col-md-4">
-                                    <button type="submit" name="report_type" value="inventory"
-                                        class="btn btn-primary w-100">Inventory Report</button>
-                                </div>
+                                <a class="col-md-4 btn btn-primary w-28" href="">Fund-Expense Report</a>
+                                <a class="col-md-4 btn btn-primary w-28" href="/employee_list/">Employee Report</a>
+                                <a class="col-md-4 btn btn-primary w-28" href="/inventory_list/">Inventory Report</a>
                             </div>
                         </form>
                     </div>

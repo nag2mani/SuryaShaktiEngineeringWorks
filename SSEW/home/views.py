@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.utils.dateparse import parse_date
 from django.http import JsonResponse
-from .report import *
+import pandas as pd
+# from .report import *
 from .models import *
 from .forms import *
 
@@ -89,41 +90,15 @@ def add_inventory(request):
     return render(request, 'add_inventory.html', {'form': form})
 
 
-def generate_report(request):
-    from_date = request.GET.get('from_date')
-    to_date = request.GET.get('to_date')
-    report_type = request.GET.get('report_type')
+def report(request):
+    return render(request, 'report.html')
 
-    if from_date and to_date:
-        from_date = parse_date(from_date)
-        to_date = parse_date(to_date)
 
-        if report_type == 'fund_expense':
-            format_type = request.GET.get('format_type', 'xlsx')
-            if format_type == 'xlsx':
-                return generate_fund_expense_report_xlsx(from_date, to_date)
-            elif format_type == 'pdf':
-                return generate_fund_expense_report_pdf(from_date, to_date)
-        elif report_type == 'employee':
-            format_type = request.GET.get('format_type', 'xlsx')
-            if format_type == 'xlsx':
-                return generate_employee_report_xlsx(from_date, to_date)
-            elif format_type == 'pdf':
-                return generate_employee_report_pdf(from_date, to_date)
-        elif report_type == 'inventory':
-            format_type = request.GET.get('format_type', 'xlsx')
-            if format_type == 'xlsx':
-                return generate_inventory_report_xlsx(from_date, to_date)
-            elif format_type == 'pdf':
-                return generate_inventory_report_pdf(from_date, to_date)
-        elif report_type == 'employee_pdf':
-            return generate_employee_report_pdf(from_date, to_date)
-        elif report_type == 'inventory_pdf':
-            return generate_inventory_report_pdf(from_date, to_date)
-        # Add similar conditions for other report types and formats
-    else:
-        return render(request, 'report.html')
+def employee_list(request):
+    employees = Employee.objects.all()  # Fetch all employee records
+    return render(request, 'employee_list.html', {'employees': employees})
 
-    return render(request, 'report.html')  # Handle other cases or errors as needed
-
+def inventory_list(request):
+    inventory = Inventory.objects.all()
+    return render(request, 'inventory_list.html', {'inventory': inventory})
 
