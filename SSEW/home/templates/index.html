@@ -88,7 +88,7 @@
                         <a href="/add_inventory/" class="shadow">Inventory</a>
                     </div>
                     <div class="col-12 col-sm-6 col-md-4 col-lg-2 mb-3">
-                        <a href="#" class="shadow">DashBoard</a>
+                        <a href="/admin/" class="shadow">Admin</a>
                     </div>
                     <div class="col-12 col-sm-6 col-md-4 col-lg-2 mb-3">
                         <a href="/report/" class="shadow">Report</a>
@@ -140,7 +140,7 @@
                                     <li>
                                         <b>Date:</b> {{ fund_in.date_time|date:"F d, Y" }} &middot;
                                         <b>Time:</b> {{ fund_in.date_time|time:"H:i:s" }} &middot;
-                                        <b>Name:</b> {{ fund_in.fund_head }} &middot;
+                                        <b>Name:</b> {{ fund_in.name }} &middot;
                                         <b>Amount:</b> Rs. {{ fund_in.cash_fund }} &nbsp;
                                         <i class="fas fa-arrow-down" style="color: green;font-size: 18px; font-weight: bold;"></i> <!-- Cash In -->
                                     </li>
@@ -170,7 +170,7 @@
                                     <li>
                                         <b>Date:</b> {{ fund_in.date_time|date:"F d, Y" }} &middot;
                                         <b>Time:</b> {{ fund_in.date_time|time:"H:i:s" }} &middot;
-                                        <b>Name:</b> {{ fund_in.fund_head }} &middot;
+                                        <b>Name:</b> {{ fund_in.name }} &middot;
                                         <b>Amount:</b> Rs. {{ fund_in.online_fund }} &nbsp;
                                         <i class="fas fa-arrow-down" style="color: green;font-size: 18px; font-weight: bold;"></i> <!-- Online In -->
                                     </li>

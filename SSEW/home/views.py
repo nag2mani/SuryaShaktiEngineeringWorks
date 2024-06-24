@@ -44,6 +44,10 @@ def home(request):
     }
     return render(request, 'index.html', context)
 
+def load_subcategories(request):
+    category_id = request.GET.get('category')
+    subcategories = SubCategory.objects.filter(category_id=category_id).all()
+    return JsonResponse(list(subcategories.values('id', 'name')), safe=False)
 
 def add_expense(request):
     if request.method == 'POST':
@@ -53,13 +57,8 @@ def add_expense(request):
             return redirect('home')  # Redirect to the home
     else:
         form = ExpensesForm()
-    
     return render(request, 'add_expense.html', {'form': form})
 
-def load_subcategories(request):
-    category_id = request.GET.get('category')
-    subcategories = SubCategory.objects.filter(category_id=category_id).all()
-    return JsonResponse(list(subcategories.values('id', 'name')), safe=False)
 
 def add_fund(request):
     if request.method == 'POST':

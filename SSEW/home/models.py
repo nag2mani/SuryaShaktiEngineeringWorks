@@ -1,13 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-# These are my models, created for database.
-
 class Expenses(models.Model):
     date_time = models.DateTimeField(auto_now_add=True)
     online_expenses = models.DecimalField(max_digits=10, decimal_places=2)
     cash_expenses = models.DecimalField(max_digits=10, decimal_places=2)
-    name_of_person = models.CharField(max_length=50)
+    name_of_person = models.CharField(max_length=50, null=True, blank=True)
     remark = models.TextField(blank=True, null=True)
     is_employee_expense = models.BooleanField(default=False)
     employee = models.ForeignKey('Employee', on_delete=models.SET_NULL, null=True, blank=True)
@@ -25,16 +23,15 @@ class SubCategory(models.Model):
     def __str__(self):
         return self.name
     
-
 class FundIn(models.Model):
     date_time = models.DateTimeField(auto_now_add=True)
     online_fund = models.DecimalField(max_digits=10, decimal_places=2)
     cash_fund = models.DecimalField(max_digits=10, decimal_places=2)
-    fund_head = models.CharField(max_length=50)
+    name = models.CharField(max_length=50)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     subcategory = models.ForeignKey(SubCategory, on_delete=models.CASCADE, default=1)
     remark = models.TextField(blank=True, null=True)
-
+    received_by = models.ForeignKey('Employee', on_delete=models.SET_NULL, null=True, blank=True)  # Added field
 
 class Employee(models.Model):
     date_time = models.DateTimeField(auto_now_add=True)
@@ -48,14 +45,9 @@ class Employee(models.Model):
     def __str__(self):
         return self.name + ", Mobile 1 : " + self.mobile1 + ", Aadhar Number : " + self.aadhar_number
 
-
 class Inventory(models.Model):
     date_time = models.DateTimeField(auto_now_add=True)
     inventory_name = models.CharField(max_length=100)
     quantity = models.PositiveIntegerField()
     total_price = models.DecimalField(max_digits=10, decimal_places=2)
     remark = models.TextField(blank=True, null=True)
-
-    # def __str__(self):
-    #     return self.inventory_name
-
