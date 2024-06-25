@@ -2,3 +2,7 @@ asgiref==3.7.2
 Django==5.0.4
 pandas==2.2.1
 xlsxwriter==3.2.0
+asgiref==3.7.2
+dj-database-url==2.1.0
+fonttools==4.47.2
+gunicorn==21.2.0
