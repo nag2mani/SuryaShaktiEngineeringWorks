@@ -107,9 +107,11 @@ def generate_report(request):
     else:
         return render(request, 'report.html')
 
+
 def employee_list(request):
-    employees = Employee.objects.all()  # Fetch all employee records
+    employees = Employee.objects.all()
     return render(request, 'employee_list.html', {'employees': employees})
+
 
 def inventory_list(request):
     inventory = Inventory.objects.all()

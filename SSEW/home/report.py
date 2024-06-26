@@ -65,6 +65,9 @@ def generate_fund_expense_report_xlsx(from_date, to_date):
 
     return response
 
+
+
+
 def generate_employee_report_xlsx(from_date, to_date):
     # Filter data based on the date range
     employees = Employee.objects.filter(date_time__range=[from_date, to_date])
@@ -101,6 +104,9 @@ def generate_employee_report_xlsx(from_date, to_date):
     response['Content-Disposition'] = 'attachment; filename=employee_report.xlsx'
 
     return response
+
+
+
 
 def generate_inventory_report_xlsx(from_date, to_date):
     # Filter data based on the date range
