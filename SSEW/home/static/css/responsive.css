@@ -1,10 +1,13 @@
 /* For Mobile Phones (both portrait and landscape) */
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 430px) {
   .gfg-div {
     width: 100%; /* Adjust width as needed */
     height: auto; /* Adjust height as needed */
     background-color: chartreuse;
     color: black;
+  }
+  #company_name, #clock{
+    font-size: 20px;
   }
 }
 

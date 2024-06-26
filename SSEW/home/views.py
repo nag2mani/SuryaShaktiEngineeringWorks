@@ -1,8 +1,7 @@
 from django.shortcuts import render, redirect
 from django.utils.dateparse import parse_date
 from django.http import JsonResponse
-import pandas as pd
-# from .report import *
+from .report import *
 from .models import *
 from .forms import *
 
@@ -90,9 +89,23 @@ def add_inventory(request):
     return render(request, 'add_inventory.html', {'form': form})
 
 
-def report(request):
-    return render(request, 'report.html')
+def generate_report(request):
+    from_date = request.GET.get('from_date')
+    to_date = request.GET.get('to_date')
+    report_type = request.GET.get('report_type')
 
+    if from_date and to_date:
+        from_date = parse_date(from_date)
+        to_date = parse_date(to_date)
+
+        if report_type == 'fund_expense_xlsx':
+            return generate_fund_expense_report_xlsx(from_date, to_date)
+        elif report_type == 'employee_xlsx':
+            return generate_employee_report_xlsx(from_date, to_date)
+        elif report_type == 'inventory_xlsx':
+            return generate_inventory_report_xlsx(from_date, to_date)
+    else:
+        return render(request, 'report.html')
 
 def employee_list(request):
     employees = Employee.objects.all()  # Fetch all employee records
@@ -101,4 +114,6 @@ def employee_list(request):
 def inventory_list(request):
     inventory = Inventory.objects.all()
     return render(request, 'inventory_list.html', {'inventory': inventory})
+
+
 
