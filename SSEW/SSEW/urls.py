@@ -32,8 +32,10 @@ urlpatterns = [
     # path('report/', report, name='report'),
     path('report/', generate_report, name='generate_report'),
     path('ajax/load-subcategories/', load_subcategories, name='load_subcategories'),
+    path('fund_expense_list/', fund_expense_list, name='fund_expense_list'),
     path('employee_list/', employee_list, name='employee_list'),
     path('inventory_list/', inventory_list, name='inventory_list'),
+    path('all_data/', all_data, name='all_data'),
     path('admin/', admin.site.urls)
 ]
 
@@ -43,3 +45,5 @@ if settings.DEBUG:
                           document_root = settings.MEDIA_ROOT)
 
 urlpatterns += staticfiles_urlpatterns()
+
+

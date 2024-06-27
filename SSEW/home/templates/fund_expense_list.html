@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fund and Expense List</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container my-4">
+        <h1 class="text-center mb-4">Fund and Expense List</h1>
+        
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Date/Time</th>
+                    <th>Type</th>
+                    <th>Online Amount</th>
+                    <th>Cash Amount</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Subcategory</th>
+                    <th>Remark</th>
+                    <th>Received By/Employee</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in fund_expense_list %}
+                    <tr>
+                        <td>{{ item.date_time }}</td>
+                        {% if item.online_expenses is not None %}
+                            <td>Expense</td>
+                            <td>{{ item.online_expenses }}</td>
+                            <td>{{ item.cash_expenses }}</td>
+                            <td>{{ item.name_of_person }}</td>
+                            <td>{{ item.category.name }}</td>
+                            <td>{{ item.subcategory.name }}</td>
+                            <td>{{ item.remark }}</td>
+                            <td>{% if item.employee %}{{ item.employee.name }}{% endif %}</td>
+                        {% else %}
+                            <td>Fund</td>
+                            <td>{{ item.online_fund }}</td>
+                            <td>{{ item.cash_fund }}</td>
+                            <td>{{ item.name }}</td>
+                            <td>{{ item.category.name }}</td>
+                            <td>{{ item.subcategory.name }}</td>
+                            <td>{{ item.remark }}</td>
+                            <td>{% if item.received_by %}{{ item.received_by.name }}{% endif %}</td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

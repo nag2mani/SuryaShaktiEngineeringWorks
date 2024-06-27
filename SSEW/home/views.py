@@ -89,6 +89,21 @@ def add_inventory(request):
     return render(request, 'add_inventory.html', {'form': form})
 
 
+def all_data(request):
+    expenses = Expenses.objects.all()
+    fundin = FundIn.objects.all()
+    employees = Employee.objects.all()
+    inventory = Inventory.objects.all()
+
+    context = {
+        'expenses': expenses,
+        'fundin': fundin,
+        'employees': employees,
+        'inventory': inventory,
+    }
+    return render(request, 'all_data.html', context)
+
+
 def generate_report(request):
     from_date = request.GET.get('from_date')
     to_date = request.GET.get('to_date')
@@ -108,14 +123,52 @@ def generate_report(request):
         return render(request, 'report.html')
 
 
+def fund_expense_list(request):
+    from_date = request.GET.get('from_date')
+    to_date = request.GET.get('to_date')
+    id = request.GET.get('id')
+
+    if from_date and to_date:
+        from_date = parse_date(from_date)
+        to_date = parse_date(to_date)
+
+        if id == 'fund_expense_list':
+            expenses = Expenses.objects.filter(date_time__range=[from_date, to_date])
+            funds = FundIn.objects.filter(date_time__range=[from_date, to_date])
+            fund_expense_list = list(expenses) + list(funds)  # Combine querysets into a list
+            return render(request, 'fund_expense_list.html', {'fund_expense_list': fund_expense_list})
+    
+    return render(request, 'fund_expense_list.html', {'fund_expense_list': []})
+
+
 def employee_list(request):
-    employees = Employee.objects.all()
-    return render(request, 'employee_list.html', {'employees': employees})
+    from_date = request.GET.get('from_date')
+    to_date = request.GET.get('to_date')
+    id = request.GET.get('id')
+
+    if from_date and to_date:
+        from_date = parse_date(from_date)
+        to_date = parse_date(to_date)
+
+        if id == 'employee_list':
+            employees = Employee.objects.filter(date_time__range=[from_date, to_date])
+            return render(request, 'employee_list.html', {'employees': employees})
+
+    return render(request, 'employee_list.html', {'employees': []})
 
 
 def inventory_list(request):
-    inventory = Inventory.objects.all()
-    return render(request, 'inventory_list.html', {'inventory': inventory})
+    from_date = request.GET.get('from_date')
+    to_date = request.GET.get('to_date')
+    id = request.GET.get('id')
 
+    if from_date and to_date:
+        from_date = parse_date(from_date)
+        to_date = parse_date(to_date)
 
+        if id == 'inventory_list':
+            inventories = Inventory.objects.filter(date_time__range=[from_date, to_date])
+            return render(request, 'inventory_list.html', {'inventories': inventories})
+
+    return render(request, 'inventory_list.html', {'inventories': []})
 

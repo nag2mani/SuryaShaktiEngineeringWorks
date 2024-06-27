@@ -73,7 +73,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h2 class="card-title text-center mb-3">View Reports</h2>
-                        <form>
+                        <form method="get" action="/fund_expense_list/">
                             <div class="row mb-3">
                                 <div class="col-md-6">
                                     <label for="from_date" class="form-label">From Date</label>
@@ -84,11 +84,43 @@
                                     <input type="date" class="form-control" id="to_date" name="to_date" required>
                                 </div>
                             </div>
-
+                            <input type="hidden" name="id" value="fund_expense_list">
                             <div class="row mb-3">
-                                <a class="col-md-4 btn btn-primary w-28" href="">Fund-Expense Report</a>
-                                <a class="col-md-4 btn btn-primary w-28" href="/employee_list/">Employee Report</a>
-                                <a class="col-md-4 btn btn-primary w-28" href="/inventory_list/">Inventory Report</a>
+                                <button type="submit" class="col-md-4 btn btn-primary w-100"> View Fund-Expense Report </button>
+                            </div>
+                        </form>
+                        
+                        <form method="get" action="/employee_list/">
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="from_date" class="form-label">From Date</label>
+                                    <input type="date" class="form-control" id="from_date" name="from_date" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="to_date" class="form-label">To Date</label>
+                                    <input type="date" class="form-control" id="to_date" name="to_date" required>
+                                </div>
+                            </div>
+                            <input type="hidden" name="id" value="employee_list">
+                            <div class="row mb-3">
+                                <button type="submit" class="col-md-4 btn btn-secondary w-100"> View Employee Report </button>
+                            </div>
+                        </form>
+                        
+                        <form method="get" action="/inventory_list/">
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="from_date" class="form-label">From Date</label>
+                                    <input type="date" class="form-control" id="from_date" name="from_date" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="to_date" class="form-label">To Date</label>
+                                    <input type="date" class="form-control" id="to_date" name="to_date" required>
+                                </div>
+                            </div>
+                            <input type="hidden" name="id" value="inventory_list">
+                            <div class="row mb-3">
+                                <button type="submit" class="col-md-4 btn btn-success w-100"> View Inventory Report </button>
                             </div>
                         </form>
                     </div>
