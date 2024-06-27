@@ -12,58 +12,6 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="row justify-content-center mt-5">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-body">
-                        <h2 class="card-title text-center mb-3">Generate Reports</h2>
-                        <form>
-                            <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <label for="from_date" class="form-label">From Date</label>
-                                    <input type="date" class="form-control" id="from_date" name="from_date" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="to_date" class="form-label">To Date</label>
-                                    <input type="date" class="form-control" id="to_date" name="to_date" required>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-md-4">
-                                    <button type="submit" name="report_type" value="fund_expense_xlsx"
-                                        class="btn btn-primary w-100">Fund Expense Report (XLSX)</button>
-                                </div>
-                                <div class="col-md-4 my-3">
-                                    <button type="submit" name="report_type" value="employee_xlsx"
-                                    class="btn btn-secondary w-100">Employee Report (XLSX)</button>
-                                </div>
-                                <div class="col-md-4">
-                                    <button type="submit" name="report_type" value="inventory_xlsx"
-                                        class="btn btn-success w-100">Inventory Report (XLSX)</button>
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <div class="col-md-4">
-                                    <button type="submit" name="report_type" value="fund_expense_pdf"
-                                        class="btn btn-primary w-100">Fund Expense Report (PDF)</button>
-                                </div>
-                                <div class="col-md-4 my-3">
-                                    <button type="submit" name="report_type" value="employee_pdf"
-                                        class="btn btn-secondary w-100">Employee Report (PDF)</button>
-                                </div>
-                                <div class="col-md-4">
-                                    <button type="submit" name="report_type" value="inventory_pdf"
-                                        class="btn btn-success w-100">Inventory Report (PDF)</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- For Viewing Report -->
 
@@ -86,10 +34,11 @@
                             </div>
                             <input type="hidden" name="id" value="fund_expense_list">
                             <div class="row mb-3">
-                                <button type="submit" class="col-md-4 btn btn-primary w-100"> View Fund-Expense Report </button>
+                                <button type="submit" class="col-md-4 btn btn-primary w-100"> View Fund-Expense Report
+                                </button>
                             </div>
                         </form>
-                        
+
                         <form method="get" action="/employee_list/">
                             <div class="row mb-3">
                                 <div class="col-md-6">
@@ -103,10 +52,11 @@
                             </div>
                             <input type="hidden" name="id" value="employee_list">
                             <div class="row mb-3">
-                                <button type="submit" class="col-md-4 btn btn-secondary w-100"> View Employee Report </button>
+                                <button type="submit" class="col-md-4 btn btn-secondary w-100"> View Employee Report
+                                </button>
                             </div>
                         </form>
-                        
+
                         <form method="get" action="/inventory_list/">
                             <div class="row mb-3">
                                 <div class="col-md-6">
@@ -120,7 +70,52 @@
                             </div>
                             <input type="hidden" name="id" value="inventory_list">
                             <div class="row mb-3">
-                                <button type="submit" class="col-md-4 btn btn-success w-100"> View Inventory Report </button>
+                                <button type="submit" class="col-md-4 btn btn-success w-100"> View Inventory Report
+                                </button>
+                            </div>
+                        </form>
+                        <div class="row text-center">
+                            <a href="/all_data/" class="custom-button">Click Here To See All Data</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title text-center mb-3">Generate Reports</h2>
+                        <form method="get" action="{% url 'generate_report' %}">
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="from_date" class="form-label">From Date</label>
+                                    <input type="date" class="form-control" id="from_date" name="from_date" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="to_date" class="form-label">To Date</label>
+                                    <input type="date" class="form-control" id="to_date" name="to_date" required>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-md-4 my-2">
+                                    <button type="submit" name="report_type" value="fund_expense_xlsx"
+                                        class="btn btn-primary w-100">Fund Expense Report (XLSX)</button>
+                                </div>
+                                <div class="col-md-4 my-2">
+                                    <button type="submit" name="report_type" value="employee_xlsx"
+                                        class="btn btn-secondary w-100">Employee Report (XLSX)</button>
+                                </div>
+                                <div class="col-md-4 my-2">
+                                    <button type="submit" name="report_type" value="inventory_xlsx"
+                                        class="btn btn-success w-100">Inventory Report (XLSX)</button>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <button type="submit" name="report_type" value="category_wise_report_xlsx"
+                                    class="btn btn-primary w-100">Generate Report Categories-wise</button>
                             </div>
                         </form>
                     </div>

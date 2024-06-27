@@ -119,6 +119,8 @@ def generate_report(request):
             return generate_employee_report_xlsx(from_date, to_date)
         elif report_type == 'inventory_xlsx':
             return generate_inventory_report_xlsx(from_date, to_date)
+        elif report_type == 'category_wise_report_xlsx':
+            return generate_category_wise_report_xlsx(from_date, to_date)
     else:
         return render(request, 'report.html')
 
