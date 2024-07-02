@@ -9,7 +9,7 @@ class ExpensesForm(forms.ModelForm):
             'online_expenses': forms.NumberInput(attrs={'class': 'form-control'}),
             'cash_expenses': forms.NumberInput(attrs={'class': 'form-control'}),
             'name_of_person': forms.TextInput(attrs={'class': 'form-control'}),
-            'remark': forms.Textarea(attrs={'class': 'form-control'}),
+            'remark': forms.TextInput(attrs={'class': 'form-control'}),
             'is_employee_expense': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
             'employee': forms.Select(attrs={'class': 'form-control'}),
             'category': forms.Select(attrs={'class': 'form-control'}),
@@ -19,14 +19,14 @@ class ExpensesForm(forms.ModelForm):
 class FundInForm(forms.ModelForm):
     class Meta:
         model = FundIn
-        fields = ['online_fund', 'cash_fund', 'name', 'category', 'subcategory', 'remark', 'received_by']  # Added field
+        fields = ['online_fund', 'cash_fund', 'name', 'source', 'subsource', 'remark', 'received_by']  # Added field
         widgets = {
             'online_fund': forms.NumberInput(attrs={'class': 'form-control'}),
             'cash_fund': forms.NumberInput(attrs={'class': 'form-control'}),
             'name': forms.TextInput(attrs={'class': 'form-control'}),
-            'category': forms.Select(attrs={'class': 'form-control'}),
-            'subcategory': forms.Select(attrs={'class': 'form-control'}),
-            'remark': forms.Textarea(attrs={'class': 'form-control'}),
+            'source': forms.Select(attrs={'class': 'form-control'}),
+            'subsource': forms.Select(attrs={'class': 'form-control'}),
+            'remark': forms.TextInput(attrs={'class': 'form-control'}),
             'received_by': forms.Select(attrs={'class': 'form-control'}),
         }
 
@@ -40,7 +40,7 @@ class EmployeeForm(forms.ModelForm):
             'mobile2': forms.TextInput(attrs={'class': 'form-control'}),
             'aadhar_number': forms.TextInput(attrs={'class': 'form-control'}),
             'salary': forms.NumberInput(attrs={'class': 'form-control'}),
-            'address': forms.Textarea(attrs={'class': 'form-control'}),
+            'address': forms.TextInput(attrs={'class': 'form-control'}),
         }
 
 class InventoryForm(forms.ModelForm):
@@ -51,9 +51,5 @@ class InventoryForm(forms.ModelForm):
             'inventory_name': forms.TextInput(attrs={'class': 'form-control'}),
             'quantity': forms.NumberInput(attrs={'class': 'form-control'}),
             'total_price': forms.NumberInput(attrs={'class': 'form-control'}),
-            'remark': forms.Textarea(attrs={'class': 'form-control'}),
+            'remark': forms.TextInput(attrs={'class': 'form-control'})
         }
-
-
-
-

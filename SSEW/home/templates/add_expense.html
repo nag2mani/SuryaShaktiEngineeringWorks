@@ -22,11 +22,31 @@
                         <form method="post">
                             {% csrf_token %}
                             <div class="mb-3">
-                                <label for="online_expenses" class="form-label">Online Expenses</label>
-                                {{ form.online_expenses }}
+                                <label for="category" class="form-label">Category</label>
+                                <span><a href="/admin/home/category/"> (Add Category) </a></span>
+                                {{ form.category }}
                             </div>
                             <div class="mb-3">
-                                <label for="cash_expenses" class="form-label">Cash Expenses</label>
+                                <label for="subcategory" class="form-label">Sub-category</label>
+                                <span><a href="/admin/home/subcategory/"> (Add Sub Category) </a></span>
+                                {{ form.subcategory }}
+                            </div>
+                            <div class="mb-3">
+                                <div class="form-check form-check-inline">
+                                    <input type="checkbox" class="form-check-input" id="online_expense_checkbox">
+                                    <label class="form-check-label" for="online_expense_checkbox">Online Expense</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input type="checkbox" class="form-check-input" id="cash_expense_checkbox">
+                                    <label class="form-check-label" for="cash_expense_checkbox">Cash Expense</label>
+                                </div>
+                            </div>
+                            <div class="mb-3" id="online_expenses" style="display: none;">
+                                <label for="online_expenses" class="form-label"> Amount </label>
+                                {{ form.online_expenses }}
+                            </div>
+                            <div class="mb-3" id="cash_expenses" style="display: none;">
+                                <label for="cash_expenses" class="form-label"> Amount</label>
                                 {{ form.cash_expenses }}
                             </div>
                             <div class="mb-3 form-check">
@@ -41,16 +61,6 @@
                             <div class="mb-3" id="id_name_of_person">
                                 <label for="name_of_person" class="form-label">Name of Person</label>
                                 {{ form.name_of_person }}
-                            </div>
-                            <div class="mb-3">
-                                <label for="category" class="form-label">Category</label>
-                                <span><a href="/admin/"> (Add Category) </a></span>
-                                {{ form.category }}
-                            </div>
-                            <div class="mb-3">
-                                <label for="subcategory" class="form-label">Sub-category</label>
-                                <span><a href="/admin/"> (Add Sub Category) </a></span>
-                                {{ form.subcategory }}
                             </div>
                             <div class="mb-3">
                                 <label for="remark" class="form-label">Remark</label>
@@ -95,11 +105,32 @@
                     }
                 });
             });
+
+            $('#online_expense_checkbox').change(function () {
+                if (this.checked) {
+                    $('#online_expenses').show();
+                    $('#cash_expenses').hide();
+                    $('#cash_expense_checkbox').prop('checked', false);
+                    $('#id_cash_expenses').val(0);  // Set cash expenses to 0
+                } else {
+                    $('#online_expenses').hide();
+                }
+            });
+
+            $('#cash_expense_checkbox').change(function () {
+                if (this.checked) {
+                    $('#cash_expenses').show();
+                    $('#online_expenses').hide();
+                    $('#online_expense_checkbox').prop('checked', false);
+                    $('#id_online_expenses').val(0);  // Set online expenses to 0
+                } else {
+                    $('#cash_expenses').hide();
+                }
+            });
         });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
 </body>
-
 </html>

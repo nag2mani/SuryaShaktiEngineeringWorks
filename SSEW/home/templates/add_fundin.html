@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -21,11 +22,31 @@
                         <form method="post">
                             {% csrf_token %}
                             <div class="mb-3">
-                                <label for="online_fund" class="form-label">Online Fund</label>
-                                {{ form.online_fund }}
+                                <label for="source" class="form-label">Source</label>
+                                <span><a href="/admin/home/source"> (Add Source) </a></span>
+                                {{ form.source }}
                             </div>
                             <div class="mb-3">
-                                <label for="cash_fund" class="form-label">Cash Fund</label>
+                                <label for="subsource" class="form-label">Sub-Source</label>
+                                <span><a href="/admin/home/subsource"> (Add Sub-Source) </a></span>
+                                {{ form.subsource }}
+                            </div>
+                            <div class="mb-3">
+                                <div class="form-check form-check-inline">
+                                    <input type="checkbox" class="form-check-input" id="online_fund_checkbox">
+                                    <label class="form-check-label" for="online_fund_checkbox">Online Fund</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input type="checkbox" class="form-check-input" id="cash_fund_checkbox">
+                                    <label class="form-check-label" for="cash_fund_checkbox">Cash Fund</label>
+                                </div>
+                            </div>
+                            <div class="mb-3" id="online_fund" style="display: none;">
+                                <label for="online_fund" class="form-label"> Amount </label>
+                                {{ form.online_fund }}
+                            </div>
+                            <div class="mb-3" id="cash_fund" style="display: none;">
+                                <label for="cash_fund" class="form-label"> Amount </label>
                                 {{ form.cash_fund }}
                             </div>
                             <div class="mb-3">
@@ -37,18 +58,8 @@
                                 {{ form.received_by }}
                             </div>
                             <div class="mb-3">
-                                <label for="category" class="form-label">Category</label>
-                                <span><a href="/admin/"> (Add Category) </a></span>
-                                {{ form.category }}
-                            </div>
-                            <div class="mb-3">
-                                <label for="subcategory" class="form-label">Sub-category</label>
-                                <span><a href="/admin/"> (Add Sub Category) </a></span>
-                                {{ form.subcategory }}
-                            </div>
-                            <div class="mb-3">
                                 <label for="remark" class="form-label">Remark</label>
-                                {{ form.remark }}
+                                {{ form.remark}}
                             </div>
                             <button type="submit" class="btn btn-primary w-100">Submit</button>
                         </form>
@@ -59,23 +70,47 @@
     </div>
     <script>
         $(document).ready(function () {
-            $('#id_category').change(function () {
-                var url = "{% url 'load_subcategories' %}";
-                var categoryId = $(this).val();
+            $('#id_source').change(function () {
+                var url = "{% url 'load_subsources' %}";
+                var sourceId = $(this).val();
                 $.ajax({
                     url: url,
                     data: {
-                        'category': categoryId
+                        'source': sourceId
                     },
                     success: function (data) {
-                        var subcategorySelect = $('#id_subcategory');
-                        subcategorySelect.empty();
-                        subcategorySelect.append('<option value="">---------</option>');
+                        var subsourceSelect = $('#id_subsource');
+                        subsourceSelect.empty();
+                        subsourceSelect.append('<option value="">---------</option>');
                         $.each(data, function (key, value) {
-                            subcategorySelect.append('<option value="' + value.id + '">' + value.name + '</option>');
+                            subsourceSelect.append('<option value="' + value.id + '">' + value.name + '</option>');
                         });
                     }
                 });
+            });
+
+            $('#online_fund_checkbox').change(function () {
+                if (this.checked) {
+                    $('#online_fund').show();
+                    $('#cash_fund').hide();
+                    $('#cash_fund_checkbox').prop('checked', false);
+                    $('#id_cash_fund').val(0);  // Set cash fund to 0
+                } else {
+                    $('#online_fund').hide();
+                    $('#id_online_fund').val(0);  // Set online fund to 0
+                }
+            });
+
+            $('#cash_fund_checkbox').change(function () {
+                if (this.checked) {
+                    $('#cash_fund').show();
+                    $('#online_fund').hide();
+                    $('#online_fund_checkbox').prop('checked', false);
+                    $('#id_online_fund').val(0);  // Set online fund to 0 if not checked
+                } else {
+                    $('#cash_fund').hide();
+                    $('#id_cash_fund').val(0);  // Set cash fund to 0 if not hecked
+                }
             });
         });
     </script>

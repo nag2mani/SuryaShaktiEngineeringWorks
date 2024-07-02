@@ -1,5 +1,4 @@
 from django.db import models
-from django.contrib.auth.models import User
 
 # Models
 class Expenses(models.Model):
@@ -24,13 +23,26 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
-
 class SubCategory(models.Model):
     name = models.CharField(max_length=50, unique=True)
     category = models.ForeignKey(Category, related_name='subcategories', on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.name} (Category: {self.category.name})"
+        return f"{self.name}"
+
+
+class Source(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+
+    def __str__(self):
+        return self.name
+
+class SubSource(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+    source = models.ForeignKey(Source, related_name='subsources', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.name}"
 
 
 class FundIn(models.Model):
@@ -38,8 +50,8 @@ class FundIn(models.Model):
     online_fund = models.DecimalField(max_digits=10, decimal_places=2)
     cash_fund = models.DecimalField(max_digits=10, decimal_places=2)
     name = models.CharField(max_length=50)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    subcategory = models.ForeignKey(SubCategory, on_delete=models.CASCADE, default=1)
+    source = models.ForeignKey(Source, on_delete=models.CASCADE)
+    subsource = models.ForeignKey(SubSource, on_delete=models.CASCADE, default=1)
     remark = models.TextField(blank=True, null=True)
     received_by = models.ForeignKey('Employee', on_delete=models.SET_NULL, null=True, blank=True)
 
@@ -57,7 +69,7 @@ class Employee(models.Model):
     address = models.TextField()
 
     def __str__(self):
-        return f"{self.name}, Mobile 1: {self.mobile1}, Aadhar Number: {self.aadhar_number}"
+        return f"{self.name}, Mob: {self.mobile1}, Aadhar: {self.aadhar_number}"
 
 
 class Inventory(models.Model):
@@ -69,3 +81,4 @@ class Inventory(models.Model):
 
     def __str__(self):
         return f"Inventory: {self.inventory_name}, Quantity: {self.quantity}, Total Price: {self.total_price}"
+    

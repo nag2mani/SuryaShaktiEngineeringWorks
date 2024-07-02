@@ -58,7 +58,7 @@ def generate_fund_expense_report_xlsx(from_date, to_date):
             value = getattr(fund, field)
             if isinstance(value, datetime):
                 value = value.replace(tzinfo=None)
-            if field in ['category', 'subcategory', 'received_by'] and value:
+            if field in ['source', 'subsource', 'received_by'] and value:
                 value = str(value)
             worksheet.cell(row=row, column=col_num, value=value)
             if field == 'cash_fund':
@@ -278,3 +278,5 @@ def generate_category_wise_report_xlsx(from_date, to_date):
     response['Content-Disposition'] = 'attachment; filename=category_wise_report.xlsx'
 
     return response
+
+
