@@ -87,7 +87,7 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
-                        <h2 class="card-title text-center mb-3">Generate Reports</h2>
+                        <h2 class="card-title text-center mb-3">Generate/Download Reports</h2>
                         <form method="get" action="{% url 'generate_report' %}">
                             <div class="row mb-3">
                                 <div class="col-md-6">
@@ -102,15 +102,15 @@
                             <div class="row mb-3">
                                 <div class="col-md-4 my-2">
                                     <button type="submit" name="report_type" value="fund_expense_xlsx"
-                                        class="btn btn-primary w-100">Expense Report</button>
+                                        class="btn btn-primary w-100">Download Fund-Expense Report</button>
                                 </div>
                                 <div class="col-md-4 my-2">
                                     <button type="submit" name="report_type" value="employee_xlsx"
-                                        class="btn btn-secondary w-100">Employee Report</button>
+                                        class="btn btn-secondary w-100">Download Employee Report</button>
                                 </div>
                                 <div class="col-md-4 my-2">
                                     <button type="submit" name="report_type" value="inventory_xlsx"
-                                        class="btn btn-success w-100">Inventory Report</button>
+                                        class="btn btn-success w-100">Download Inventory Report</button>
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -126,7 +126,7 @@
                             </div>
                             <div class="row mb-3">
                                 <button type="submit" name="report_type" value="expense_category_wise_report_xlsx"
-                                    class="btn btn-primary w-100">Generate Expense Report Category-wise</button>
+                                    class="btn btn-primary w-100">Download Expense Report Category-wise</button>
                             </div>
                             <div class="row mb-3">
                                 <div class="col-md-12">
@@ -141,7 +141,7 @@
                             </div>
                             <div class="row mb-3">
                                 <button type="submit" name="report_type" value="fundin_source_wise_report_xlsx"
-                                    class="btn btn-primary w-100">Generate Fund In Report Source-wise</button>
+                                    class="btn btn-primary w-100">Download Fund In Report Source-wise</button>
                             </div>
                         </form>
                     </div>
