@@ -113,6 +113,8 @@ def generate_report(request):
     from_date = request.GET.get('from_date')
     to_date = request.GET.get('to_date')
     report_type = request.GET.get('report_type')
+    category_id = request.GET.get('expense_category')
+    source_id = request.GET.get('fund_source')
 
     if from_date and to_date:
         from_date = parse_date(from_date)
@@ -124,11 +126,12 @@ def generate_report(request):
             return generate_employee_report_xlsx(from_date, to_date)
         elif report_type == 'inventory_xlsx':
             return generate_inventory_report_xlsx(from_date, to_date)
-        elif report_type == 'category_wise_report_xlsx':
-            return generate_category_wise_report_xlsx(from_date, to_date)
-        elif report_type == 'category_wise_report_xlsx':
-            return generate_source_wise_report_xlsx(from_date, to_date)
+        elif report_type == 'expense_category_wise_report_xlsx':
+            return generate_category_wise_report_xlsx(from_date, to_date, category_id)
+        elif report_type == 'fundin_source_wise_report_xlsx':
+            return generate_source_wise_report_xlsx(from_date, to_date, source_id)
     else:
-        return render(request, 'report.html')
+        return render(request, 'report.html', {'categories': Category.objects.all(), 'sources': Source.objects.all()})
+
 
 

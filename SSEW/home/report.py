@@ -239,69 +239,72 @@ def generate_inventory_report_xlsx(from_date, to_date):
 
 
 
-def generate_category_wise_expense_report_xlsx(from_date, to_date, category_id):
+def generate_category_wise_report_xlsx(from_date, to_date, category_id):
     expenses = Expenses.objects.filter(date_time__range=[from_date, to_date])
     if category_id:
         expenses = expenses.filter(category_id=category_id)
 
+    response = HttpResponse(
+        content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    )
+    response['Content-Disposition'] = 'attachment; filename=category_wise_report.xlsx'
+
     workbook = Workbook()
     worksheet = workbook.active
-    worksheet.title = "Category-wise Expense Report"
+    worksheet.title = 'Expenses'
 
-    headers = [field.name for field in Expenses._meta.fields]
-    for col_num, header in enumerate(headers, 1):
-        worksheet.cell(row=1, column=col_num, value=header)
+    columns = ['Date', 'Online Expenses', 'Cash Expenses', 'Name of Person', 'Remark']
+    row_num = 1
 
-    row = 2
+    for col_num, column_title in enumerate(columns, 1):
+        worksheet.cell(row=row_num, column=col_num, value=column_title)
+
     for expense in expenses:
-        for col_num, field in enumerate(headers, 1):
-            value = getattr(expense, field)
-            if isinstance(value, datetime):
-                value = value.replace(tzinfo=None)
-            if field in ['category', 'subcategory', 'employee'] and value:
-                value = str(value)
-            worksheet.cell(row=row, column=col_num, value=value)
-        row += 1
+        row_num += 1
+        row = [
+            expense.date_time,
+            expense.online_expenses,
+            expense.cash_expenses,
+            expense.name_of_person,
+            expense.remark
+        ]
+        for col_num, cell_value in enumerate(row, 1):
+            worksheet.cell(row=row_num, column=col_num, value=cell_value)
 
-    output = BytesIO()
-    workbook.save(output)
-    output.seek(0)
-
-    response = HttpResponse(output.read(), content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
-    response['Content-Disposition'] = 'attachment; filename=category_wise_expense_report.xlsx'
+    workbook.save(response)
     return response
-
 
 def generate_source_wise_report_xlsx(from_date, to_date, source_id):
     fundins = FundIn.objects.filter(date_time__range=[from_date, to_date])
     if source_id:
         fundins = fundins.filter(source_id=source_id)
 
+    response = HttpResponse(
+        content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    )
+    response['Content-Disposition'] = 'attachment; filename=source_wise_report.xlsx'
+
     workbook = Workbook()
     worksheet = workbook.active
-    worksheet.title = "Source-wise Fund In Report"
+    worksheet.title = 'FundIns'
 
-    headers = [field.name for field in FundIn._meta.fields]
-    for col_num, header in enumerate(headers, 1):
-        worksheet.cell(row=1, column=col_num, value=header)
+    columns = ['Date', 'Online Fund', 'Cash Fund', 'Name', 'Remark']
+    row_num = 1
 
-    row = 2
+    for col_num, column_title in enumerate(columns, 1):
+        worksheet.cell(row=row_num, column=col_num, value=column_title)
+
     for fundin in fundins:
-        for col_num, field in enumerate(headers, 1):
-            value = getattr(fundin, field)
-            if isinstance(value, datetime):
-                value = value.replace(tzinfo=None)
-            if field in ['source', 'subsource', 'received_by'] and value:
-                value = str(value)
-            worksheet.cell(row=row, column=col_num, value=value)
-        row += 1
+        row_num += 1
+        row = [
+            fundin.date_time,
+            fundin.online_fund,
+            fundin.cash_fund,
+            fundin.name,
+            fundin.remark
+        ]
+        for col_num, cell_value in enumerate(row, 1):
+            worksheet.cell(row=row_num, column=col_num, value=cell_value)
 
-    output = BytesIO()
-    workbook.save(output)
-    output.seek(0)
-
-    response = HttpResponse(output.read(), content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
-    response['Content-Disposition'] = 'attachment; filename=source_wise_fundin_report.xlsx'
+    workbook.save(response)
     return response
-
-
