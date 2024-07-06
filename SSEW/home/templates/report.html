@@ -19,7 +19,7 @@
             <div class="col-md-6 mb-5">
                 <div class="card">
                     <div class="card-body">
-                        <button onclick = "window.location.href='/'" class="btn btn-primary mb-3"> Go To Home Page </button>
+                        <button onclick = "window.location.href='/'" class="btn btn-primary mb-4"> Go To Home Page </button>
                         <h2 class="card-title text-center mb-3">View Reports</h2>
                         <form method="get" action="/fund_expense_list/">
                             <div class="row mb-3">
@@ -85,6 +85,7 @@
             <div class="col-md-6 mb-5">
                 <div class="card">
                     <div class="card-body">
+                        <button onclick = "window.location.href='/'" class="btn btn-primary mb-2"> Go To Home Page </button>
                         <h2 class="card-title text-center mb-3">Generate/Download Reports</h2>
                         <form method="get" action="{% url 'generate_report' %}">
                             <div class="row mb-3">
