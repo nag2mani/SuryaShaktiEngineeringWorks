@@ -59,7 +59,6 @@ def inventory_list(request):
     return render(request, 'inventory_list.html', {'inventories': []})
 
 
-
 def generate_fund_expense_report_xlsx(from_date, to_date):
     # Filter data based on the date range
     expenses = Expenses.objects.filter(date_time__range=[from_date, to_date])
@@ -159,8 +158,6 @@ def generate_fund_expense_report_xlsx(from_date, to_date):
     return response
 
 
-
-
 def generate_employee_report_xlsx(from_date, to_date):
     # Filter data based on the date range
     employees = Employee.objects.filter(date_time__range=[from_date, to_date])
@@ -197,7 +194,6 @@ def generate_employee_report_xlsx(from_date, to_date):
     response['Content-Disposition'] = 'attachment; filename=employee_report.xlsx'
 
     return response
-
 
 
 def generate_inventory_report_xlsx(from_date, to_date):
@@ -238,7 +234,6 @@ def generate_inventory_report_xlsx(from_date, to_date):
     return response
 
 
-
 def generate_category_wise_report_xlsx(from_date, to_date, category_id):
     expenses = Expenses.objects.filter(date_time__range=[from_date, to_date])
     if category_id:
@@ -275,7 +270,6 @@ def generate_category_wise_report_xlsx(from_date, to_date, category_id):
     return response
 
 
-
 def generate_source_wise_report_xlsx(from_date, to_date, source_id):
     fundins = FundIn.objects.filter(date_time__range=[from_date, to_date])
     if source_id:
@@ -310,4 +304,3 @@ def generate_source_wise_report_xlsx(from_date, to_date, source_id):
 
     workbook.save(response)
     return response
-

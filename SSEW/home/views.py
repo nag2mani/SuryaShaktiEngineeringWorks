@@ -1,9 +1,9 @@
-from django.shortcuts import render, redirect
-from django.utils.dateparse import parse_date
-from django.http import JsonResponse
-from .models import *
 from .forms import *
+from .models import *
 from .report import *
+from django.http import JsonResponse
+from django.utils.dateparse import parse_date
+from django.shortcuts import render, redirect
 
 #Instruction : Use and pass only singular variable name throught the application.
 
@@ -40,22 +40,25 @@ def home(request):
     }
     return render(request, 'index.html', context)
 
+
 def load_subcategories(request):
     category_id = request.GET.get('category')
     subcategories = SubCategory.objects.filter(category_id=category_id).all()
     return JsonResponse(list(subcategories.values('id', 'name')), safe=False)
+
 
 def load_subsources(request):
     source_id = request.GET.get('source')
     subsources = SubSource.objects.filter(source_id=source_id).all()
     return JsonResponse(list(subsources.values('id', 'name')), safe=False)
 
+
 def add_expense(request):
     if request.method == 'POST':
         form = ExpensesForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('home')  # Redirect to the home
+            return redirect('home')
     else:
         form = ExpensesForm()
     return render(request, 'add_expense.html', {'form': form})
@@ -66,7 +69,7 @@ def add_fund(request):
         form = FundInForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('home')  # Redirect to the home
+            return redirect('home')
     else:
         form = FundInForm()
     return render(request, 'add_fundin.html', {'form': form})
@@ -77,7 +80,7 @@ def add_employee(request):
         form = EmployeeForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('home')  # Redirect to the home
+            return redirect('home')
     else:
         form = EmployeeForm()
     return render(request, 'add_employee.html', {'form': form})
@@ -88,7 +91,7 @@ def add_inventory(request):
         form = InventoryForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('home')  # Redirect to the home
+            return redirect('home')
     else:
         form = InventoryForm()
     return render(request, 'add_inventory.html', {'form': form})
@@ -132,6 +135,3 @@ def generate_report(request):
             return generate_source_wise_report_xlsx(from_date, to_date, source_id)
     else:
         return render(request, 'report.html', {'categories': Category.objects.all(), 'sources': Source.objects.all()})
-
-
-
