@@ -1,8 +1,7 @@
-/* For Mobile Phones (both portrait and landscape) */
 @media screen and (max-width: 430px) {
   .gfg-div {
-    width: 100%; /* Adjust width as needed */
-    height: auto; /* Adjust height as needed */
+    width: 100%;
+    height: auto;
     background-color: chartreuse;
     color: black;
   }
@@ -11,21 +10,21 @@
   }
 }
 
-/* For Tablets (portrait and landscape) */
+
 @media screen and (min-width: 768px) and (max-width: 1023px) {
   .gfg-div {
-    width: 100%; /* Adjust width as needed */
-    height: auto; /* Adjust height as needed */
+    width: 100%;
+    height: auto;
     background-color: orange;
     color: black;
   }
 }
 
-/* For Desktop */
+
 @media screen and (min-width: 1024px) {
   .gfg-div {
-    width: 100%; /* Adjust width as needed */
-    height: auto; /* Adjust height as needed */
+    width: 100%;
+    height: auto;
     background-color: #63c971;
     color: #fff;
   }
@@ -38,11 +37,13 @@
   }
 }
 
-/* Position clock for mobile view */
+
 @media (max-width: 991.98px) {
   .clock-container {
       position: static;
-      margin-top: 15px; /* Adjust margin as needed */
+      margin-top: 15px;
       text-align: center;
   }
 }
+
+
