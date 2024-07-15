@@ -1,6 +1,5 @@
 from django.db import models
 
-# Models
 class Expenses(models.Model):
     date_time = models.DateTimeField(auto_now_add=True)
     online_expenses = models.DecimalField(max_digits=10, decimal_places=2)
@@ -81,4 +80,3 @@ class Inventory(models.Model):
 
     def __str__(self):
         return f"Inventory: {self.inventory_name}, Quantity: {self.quantity}, Total Price: {self.total_price}"
-    

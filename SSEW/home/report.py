@@ -8,7 +8,6 @@ from django.http import HttpResponse
 from django.utils.dateparse import parse_date
 from django.shortcuts import render
 
-
 def fund_expense_list(request):
     from_date = request.GET.get('from_date')
     to_date = request.GET.get('to_date')
