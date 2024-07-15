@@ -1,9 +1,6 @@
-/* Section - 1 ; Imported module or fonts */
 /* This is the fonts we will use, font-family: 'Playfair Display', serif; */
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&display=swap');
-
-/* Section - Body*/
 
 body{
     margin: 0px !important;
@@ -38,7 +35,7 @@ body{
     border-radius: 5px;
     transition: background-color 0.3s ease, transform 0.3s ease;
     font-size: 1.4rem; /* Equivalent to h3 */
-    font-weight: bold; /* Make text bold */
+    font-weight: bold;
 }
 .button-container a:hover {
     background-color: #0056b3;
