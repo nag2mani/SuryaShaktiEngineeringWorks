@@ -18,8 +18,23 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
-                        <button onclick = "window.location.href='/'" class="btn btn-primary mb-3"> Go To Home Page </button>
+                        <button onclick="window.location.href='/'" class="btn btn-primary mb-3"> Go To Home Page
+                        </button>
                         <h2 class="card-title text-center mb-3">Add Fund In</h2>
+
+                        <!-- Display messages -->
+                        {% if messages %}
+                        <div>
+                            {% for message in messages %}
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+
                         <form method="post">
                             {% csrf_token %}
                             <div class="mb-3">

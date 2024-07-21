@@ -71,7 +71,8 @@ def add_fund(request):
         form = FundInForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('home')
+            messages.success(request, 'Fund added successfully!')
+            return redirect('add_fundin')
     else:
         form = FundInForm()
     return render(request, 'add_fundin.html', {'form': form})
