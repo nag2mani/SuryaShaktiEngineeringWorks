@@ -2,6 +2,7 @@ from .forms import *
 from .models import *
 from .report import *
 from django.http import JsonResponse
+from django.contrib import messages
 from django.utils.dateparse import parse_date
 from django.shortcuts import render, redirect
 
@@ -58,7 +59,8 @@ def add_expense(request):
         form = ExpensesForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('home')
+            messages.success(request, 'Expense added successfully!')
+            return redirect('add_expense')
     else:
         form = ExpensesForm()
     return render(request, 'add_expense.html', {'form': form})
