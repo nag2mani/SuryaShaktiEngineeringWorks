@@ -59,6 +59,7 @@ def add_expense(request):
         form = ExpensesForm(request.POST)
         if form.is_valid():
             form.save()
+            # To send message on Template.
             messages.success(request, 'Expense added successfully!')
             return redirect('add_expense')
     else:
@@ -71,6 +72,7 @@ def add_fund(request):
         form = FundInForm(request.POST)
         if form.is_valid():
             form.save()
+            # To send message on Template.
             messages.success(request, 'Fund added successfully!')
             return redirect('add_fundin')
     else:
