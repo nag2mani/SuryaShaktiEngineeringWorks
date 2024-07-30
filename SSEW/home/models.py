@@ -23,7 +23,7 @@ class Category(models.Model):
         return self.name
 
 class SubCategory(models.Model):
-    name = models.CharField(max_length=50, unique=True)
+    name = models.CharField(max_length=50)
     category = models.ForeignKey(Category, related_name='subcategories', on_delete=models.CASCADE)
 
     def __str__(self):
@@ -37,7 +37,7 @@ class Source(models.Model):
         return self.name
 
 class SubSource(models.Model):
-    name = models.CharField(max_length=50, unique=True)
+    name = models.CharField(max_length=50)
     source = models.ForeignKey(Source, related_name='subsources', on_delete=models.CASCADE)
 
     def __str__(self):
