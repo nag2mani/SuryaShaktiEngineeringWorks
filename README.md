@@ -1,4 +1,4 @@
-# Repository: Expense Management Website
+# Expense Management Website
 
 This repository contains the code for an **Expense Management Website** designed to help companies efficiently manage expenses, funds, inventory, and employee records. The website includes various features and dashboards to facilitate the tracking and generation of reports.
 
