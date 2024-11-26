@@ -42,3 +42,4 @@ This repository contains the code for an **Expense Management Website** designed
    ```bash
    git clone https://github.com/nag2mani/SuryaShaktiEngineeringWorks/
    cd SuryaShaktiEngineeringWorks
+   python manage.py runserver
